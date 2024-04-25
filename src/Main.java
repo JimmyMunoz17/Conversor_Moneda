@@ -14,7 +14,6 @@ public class Main {
     }
 
     public static void menu(){
-        Scanner sc = new Scanner(System.in);
         api api_conexion = new api();
         // Parsear el JSON
         JsonObject jsonObject = JsonParser.parseString(api_conexion.jsonResponse).getAsJsonObject();
@@ -23,21 +22,22 @@ public class Main {
         DecimalFormat decimal = new DecimalFormat("#.000");
         int opcion = 0;
         while (opcion != 7){
+            Scanner sc = new Scanner(System.in);
             double numero = 0;
             double resultado =0 ;
+            System.out.println("************************************************");
+            System.out.println("Bienvenidos al convertidor de monedas\n");
+            System.out.println("Seleccione una opción:\n" +
+                    "1) Dólar ==>> Peso Argentino\n" +
+                    "2) Peso Argentino ==>> Dólar\n" +
+                    "3) Dólar ==>> Real brasileño\n" +
+                    "4) Real brasileño ==>> Dólar\n" +
+                    "5) Dólar ==>> Peso colombiano\n" +
+                    "6) Peso colombiano ==>> Dólar\n" +
+                    "7) Salir\n" +
+                    "Elija una opción valida: ");
+            System.out.println("************************************************");
              try{
-                 System.out.println("************************************************");
-                 System.out.println("Bienvenidos al convertidor de monedas");
-                 System.out.println("Seleccione una opción:\n" +
-                         "1) Dólar ==>> Peso Argentino\n" +
-                         "2) Peso Argentino ==>> Dólar\n" +
-                         "3) Dólar ==>> Real brasileño\n" +
-                         "4) Real brasileño ==>> Dólar\n" +
-                         "5) Dólar ==>> Peso colombiano\n" +
-                         "6) Peso colombiano ==>> Dólar\n" +
-                         "7) Salir\n" +
-                         "Elija una opción valida: ");
-                 System.out.println("************************************************");
                  opcion = sc.nextInt();
                  if(opcion == 1){
                      try {
@@ -107,8 +107,9 @@ public class Main {
                  }else {
                      System.out.println("seleccione una opción correcta");
                  }
-             }catch ( InputMismatchException e){
+             }catch ( Exception e){
                  System.out.println("Seleccione una opción correcta");
+                 opcion = 0;
              }
         }
 
